@@ -1,26 +1,22 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <Header />
+  <router-view />
 </template>
-
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+import Header from "@/modules/modulePokemon/components/partials/Header.vue";
 export default {
-  name: 'App',
   components: {
-    HelloWorld
-  }
+    Header,
+  },
 }
 </script>
-
-<style>
+<style lang="scss">
+/**Add PrimeVue and PrimeFlex */
+@import "~primevue/resources/primevue.min.css";
+@import "~primevue/resources/themes/tailwind-light/theme.css";
+@import "~primeicons/primeicons.css";
+@import '~primeflex/primeflex.css';
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
 }
 </style>
