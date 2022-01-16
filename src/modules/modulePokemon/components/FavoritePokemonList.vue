@@ -1,5 +1,5 @@
 <template>
   <h2>
-    tabla favoritos
+    LISTA DE POKEMONES FAVORITOS
   </h2>
 </template>

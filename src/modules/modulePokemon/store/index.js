@@ -1,13 +1,17 @@
-import { createStore } from 'vuex'
-
+import { createStore } from "vuex";
 export default createStore({
   state: {
-    pokemonList: {}
+    data: {},
+    selectedPokemonList: []
   },
   mutations: {
+    setPokemons: (state, pokemons) => {
+      state.data = pokemons;
+    },
+    setSelectedPokemons: (state, data) => {
+      state.selectedPokemonList.push(data);
+    }
   },
-  actions: {
-  },
-  modules: {
-  }
-})
+  actions: {},
+  modules: {},
+});

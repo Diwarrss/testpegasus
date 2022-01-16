@@ -1,31 +1,25 @@
 <template>
   <div class="page-pokemones">
-    <PokemonList :pokemons="pokemons" />
-    <TableFavorites />
+    <PokemonList />
+    <SelectedPokemonTable />
   </div>
 </template>
 <script>
 import PokemonList from "@/modules/modulePokemon/components/PokemonList.vue";
-import TableFavorites from "@/modules/modulePokemon/components/TableFavorites.vue";
+import SelectedPokemonTable from "@/modules/modulePokemon/components/SelectedPokemonTable.vue";
 export default {
   components: {
     PokemonList,
-    TableFavorites
-  },
-  data(){
-    return {
-      pokemons: []
-    }
+    SelectedPokemonTable
   },
   created() {
     this.getPokemons()
   },
   methods: {
     getPokemons(){
-      this.axios.get('https://pokeapi.co/api/v2/pokemon')
+      this.axios.get('https://pokeapi.co/api/v2/pokemon?limit=10')
       .then(res => {
-        this.pokemons = res.data
-        console.log(res)
+        this.$store.commit('setPokemons', res.data)
       })
       .catch(err => {
         console.error(err); 
@@ -34,3 +28,8 @@ export default {
   }
 }
 </script>
+<style lang="css">
+.page-pokemones{
+  margin: 50px 50px;
+}
+</style>
