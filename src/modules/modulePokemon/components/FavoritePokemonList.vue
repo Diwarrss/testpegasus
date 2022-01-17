@@ -7,7 +7,7 @@
       <div
         v-for="(pokemon, key) in favorites"
         :key="key"
-        class="p-col-6"
+        class="p-col-12 p-md-6"
       >
         <Fieldset 
           :legend="pokemon.name"

@@ -10,21 +10,31 @@ import SelectedPokemonTable from "@/modules/modulePokemon/components/SelectedPok
 export default {
   components: {
     PokemonList,
-    SelectedPokemonTable
+    SelectedPokemonTable,
   },
-  created() {
-    this.getPokemons()
+  async created() {
+    this.getPokemons();
   },
   methods: {
-    getPokemons(){
-      this.axios.get('https://pokeapi.co/api/v2/pokemon?limit=10')
-      .then(res => {
-        this.$store.commit('setPokemons', res.data)
-      })
-      .catch(err => {
-        console.error(err); 
-      })
-    }
-  }
-}
+    async getPokemons() {
+      try {
+        const { data: pokemons } = await this.axios.get(
+          "https://pokeapi.co/api/v2/pokemon?limit=10"
+        );
+        this.$store.commit("setPokemons", pokemons);
+      } catch (error) {
+        if (error.response) {
+          console.log(error.response.data);
+          console.log(error.response.status);
+          console.log(error.response.headers);
+        } else if (error.request) {
+          console.log(error.request);
+        } else {
+          console.log("Error", error.message);
+        }
+        console.log(error);
+      }
+    },
+  },
+};
 </script>

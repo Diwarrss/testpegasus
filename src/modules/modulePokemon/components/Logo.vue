@@ -7,10 +7,14 @@
   </div>
 </template>
 <style lang="scss">
-.component-logo{
-  height: 90vh;
+.component-logo{  
+  position: fixed;
+  top: 80px;
+  left: 0;
+  width: 100%;
+  height: 100%;
   img{
-    width: 90%;
+    width: 70%;
     height: auto;
   }
 }

@@ -25,7 +25,10 @@ export default {
     border-color: #17a2b8;
   }
   .main-content{
-    margin: 50px 50px;
+    margin: 50px;
+    @media (max-width: 576px){
+      margin: 15px;
+    }
   }
   .p-fieldset{
     border: 1px solid black;

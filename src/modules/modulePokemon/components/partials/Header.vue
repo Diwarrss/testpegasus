@@ -1,6 +1,6 @@
 <template>
   <div class="component-header p-grid">
-    <div class="p-col-6">
+    <div class="p-col-12 p-md-6">
       <span class="text-pokemon">
         API-Pokémon
       </span>
