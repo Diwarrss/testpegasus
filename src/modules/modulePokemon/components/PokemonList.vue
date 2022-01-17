@@ -73,7 +73,7 @@ export default {
           position: 'top-end',
           icon: 'warning',
           title: 'Oops...',
-          text: `${name} ya existe en la lista!`,
+          text: `¡${name} ya existe en la lista!`,
           showConfirmButton: false,
           timer: 1500
         });
@@ -110,12 +110,6 @@ export default {
   }
   .pokemon-info{
     width: 80%;
-    .p-button-info{
-      width: 100px;
-      height: 35px;
-      background-color:#17a2b8;
-      border-color: #17a2b8;
-    }
   }
   .pagination-buttons{
     margin-top: 25px;

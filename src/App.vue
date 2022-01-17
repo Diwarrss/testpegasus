@@ -18,5 +18,11 @@ export default {
 @import '~primeflex/primeflex.css';
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
+  .p-button-info{
+    width: 100px;
+    height: 35px;
+    background-color:#17a2b8;
+    border-color: #17a2b8;
+  }
 }
 </style>
