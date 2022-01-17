@@ -1,6 +1,9 @@
 <template>
   <div class="component-pokemon-list">
-    <Fieldset legend="Lista de Pokemones">
+    <Fieldset
+      v-if="pokemons.results.length"
+      legend="Lista de Pokemones"
+    >
       <div class="p-grid">
         <div
           v-for="(pokemon, key) in pokemons.results"

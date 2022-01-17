@@ -34,7 +34,7 @@ export default {
   },
 };
 </script>
-<style lang="scss" scoped>
+<style lang="scss">
 .component-favorite-pokemon {
   .title {
     font-size: 30px;
