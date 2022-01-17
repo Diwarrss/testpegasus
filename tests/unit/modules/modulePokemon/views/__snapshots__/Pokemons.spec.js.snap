@@ -1,0 +1,8 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Pokemons.vue Verificar que el view no se modifico 1`] = `
+<div class="page-pokemones">
+  <pokemon-list-stub></pokemon-list-stub>
+  <selected-pokemon-table-stub></selected-pokemon-table-stub>
+</div>
+`;
