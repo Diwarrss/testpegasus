@@ -18,9 +18,7 @@ export default {
   methods: {
     async getPokemons() {
       try {
-        const { data: pokemons } = await this.axios.get(
-          "https://pokeapi.co/api/v2/pokemon?limit=10"
-        );
+        const { data: pokemons } = await this.axios.get("/pokemon?limit=10");
         this.$store.commit("setPokemons", pokemons);
       } catch (error) {
         if (error.response) {

@@ -3,13 +3,13 @@ import VuexPersistence from 'vuex-persist'
 
 export default createStore({
   state: {
-    data: {},
+    pokemons: {},
     selectedPokemonList: [],
     favoritePokemonList: []
   },
   mutations: {
-    setPokemons: (state, pokemons) => {
-      state.data = pokemons;
+    setPokemons: (state, data) => {
+      state.pokemons = data;
     },
     setSelectedPokemons: (state, data) => {
       state.selectedPokemonList.push(data);
@@ -22,6 +22,9 @@ export default createStore({
     deletePokemonSelected({ state }, name){
       state.selectedPokemonList = state.selectedPokemonList.filter(pokemon => pokemon.name !== name);
     }
+  },
+  getters: {
+
   },
   plugins:[
     new VuexPersistence({

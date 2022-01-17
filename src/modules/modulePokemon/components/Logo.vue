@@ -6,7 +6,7 @@
     >
   </div>
 </template>
-<style lang="scss">
+<style lang="scss" scoped>
 .component-logo{  
   position: fixed;
   top: 80px;

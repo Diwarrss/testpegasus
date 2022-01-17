@@ -12,6 +12,7 @@
               {{ pokemon.name }}
             </h3>
             <Button
+              :id="`btn-${pokemon.name}`"
               label="Info"
               class="p-button-info"
               @click.prevent="selectPokemon(pokemon.name)"
@@ -38,6 +39,7 @@
 <script>
 import Fieldset from "primevue/fieldset";
 import Button from "primevue/button";
+import { mapState } from "vuex";
 export default {
   components: {
     Fieldset,
@@ -47,12 +49,7 @@ export default {
     showPrevious: false,
   }),
   computed: {
-    pokemons() {
-      return this.$store.state.data;
-    },
-    selectedPokemonList() {
-      return this.$store.state.selectedPokemonList;
-    },
+    ...mapState(['pokemons', 'selectedPokemonList'])
   },
   methods: {
     async changePage(action) {
@@ -60,7 +57,7 @@ export default {
       action === "next"
         ? (url = this.pokemons.next)
         : (url = this.pokemons.previous);
-      
+
       try {
         const { data: pokemons } = await this.axios.get(url);
         this.$store.commit("setPokemons", pokemons);
@@ -81,6 +78,8 @@ export default {
       }
     },
     async selectPokemon(name) {
+      let btn = document.getElementById(`btn-${name}`)
+      btn.disabled = true
       if (this.checkPokemonSelected(name)) {
         this.$swal({
           position: "top-end",
@@ -90,16 +89,27 @@ export default {
           showConfirmButton: false,
           timer: 1500,
         });
+        btn.disabled = false
         return;
       }
-
+      
       try {
-        const { data: pokemon } = await this.axios.get(`https://pokeapi.co/api/v2/pokemon/${name}`);
+        this.$swal({
+          position: "top-end",
+          icon: "success",
+          title: "Ok...",
+          html: `¡<b>${name}</b> agregado a la lista!`,
+          showConfirmButton: false,
+          timer: 1500,
+        });
+        const { data: pokemon } = await this.axios.get(`/pokemon/${name}`);
         this.$store.commit("setSelectedPokemons", pokemon);
         this.pokemons.next && this.pokemons.previous
           ? (this.showPrevious = true)
           : (this.showPrevious = false);
+        btn.disabled = false
       } catch (error) {
+        btn.disabled = false
         if (error.response) {
           console.log(error.response.data);
           console.log(error.response.status);
@@ -121,7 +131,7 @@ export default {
   },
 };
 </script>
-<style lang="scss">
+<style lang="scss" scoped>
 .component-pokemon-list {
   .pokemon-info {
     width: 80%;
