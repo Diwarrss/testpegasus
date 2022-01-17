@@ -43,6 +43,7 @@
 import Fieldset from "primevue/fieldset";
 import Button from "primevue/button";
 import { mapState } from "vuex";
+import { consoleLogError } from '@/modules/modulePokemon/mixins/showError.js'
 export default {
   components: {
     Fieldset,
@@ -68,16 +69,7 @@ export default {
           ? (this.showPrevious = true)
           : (this.showPrevious = false);
       } catch (error) {
-        if (error.response) {
-          console.log(error.response.data);
-          console.log(error.response.status);
-          console.log(error.response.headers);
-        } else if (error.request) {
-          console.log(error.request);
-        } else {
-          console.log("Error", error.message);
-        }
-        console.log(error);
+        consoleLogError(error)
       }
     },
     async selectPokemon(name) {
@@ -113,16 +105,7 @@ export default {
         btn.disabled = false
       } catch (error) {
         btn.disabled = false
-        if (error.response) {
-          console.log(error.response.data);
-          console.log(error.response.status);
-          console.log(error.response.headers);
-        } else if (error.request) {
-          console.log(error.request);
-        } else {
-          console.log("Error", error.message);
-        }
-        console.log(error);
+        consoleLogError(error)
       }
     },
     checkPokemonSelected(name) {
