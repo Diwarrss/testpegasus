@@ -42,7 +42,7 @@
           <img
             :src="data.sprites.other.dream_world.front_default"
             :alt="data.name"
-            class="product-image"
+            class="pokemon-image"
           >
         </template>
       </Column>
@@ -158,7 +158,7 @@ export default {
 <style lang="scss">
 .component-selected-pokemon{
   .p-datatable{
-    .product-image{
+    .pokemon-image{
       width: 50px;
       height:auto;
     }

@@ -28,8 +28,3 @@ export default {
   }
 }
 </script>
-<style lang="css">
-.page-pokemones{
-  margin: 50px 50px;
-}
-</style>

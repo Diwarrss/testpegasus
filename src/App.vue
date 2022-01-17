@@ -1,6 +1,6 @@
 <template>
   <Header />
-  <router-view />
+  <router-view class="main-content" />
 </template>
 <script>
 import Header from "@/modules/modulePokemon/components/partials/Header.vue";
@@ -23,6 +23,19 @@ export default {
     height: 35px;
     background-color:#17a2b8;
     border-color: #17a2b8;
+  }
+  .main-content{
+    margin: 50px 50px;
+  }
+  .p-fieldset{
+    border: 1px solid black;
+  }
+  .p-fieldset .p-fieldset-legend {
+    color: black;
+    border-radius: unset;
+    border: unset;
+    background-color:unset;
+    font-weight: normal;
   }
 }
 </style>

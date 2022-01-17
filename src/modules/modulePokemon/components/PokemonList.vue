@@ -98,16 +98,6 @@ export default {
 </script>
 <style lang="scss">
 .component-pokemon-list{
-  .p-fieldset{
-    border: 1px solid black;
-  }
-  .p-fieldset .p-fieldset-legend {
-    color: black;
-    border-radius: unset;
-    border: unset;
-    background-color:unset;
-    font-weight: normal;
-  }
   .pokemon-info{
     width: 80%;
   }
