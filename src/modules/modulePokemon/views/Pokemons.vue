@@ -7,7 +7,7 @@
 <script>
 import PokemonList from "@/modules/modulePokemon/components/PokemonList.vue";
 import SelectedPokemonTable from "@/modules/modulePokemon/components/SelectedPokemonTable.vue";
-import { consoleLogError } from '@/modules/modulePokemon/mixins/showError.js'
+import { consoleLogError } from '@/modules/modulePokemon/mixins/notify.js'
 export default {
   components: {
     PokemonList,

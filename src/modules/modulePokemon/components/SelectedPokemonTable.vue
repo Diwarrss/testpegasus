@@ -92,6 +92,7 @@ import Column from "primevue/column";
 import Button from "primevue/button";
 import Dialog from "primevue/dialog";
 import { mapState } from "vuex";
+import { notifyAddFail, notifyAddSuccessful, notifyDeletedSuccessful } from '@/modules/modulePokemon/mixins/notify.js'
 export default {
   components: {
     DataTable,
@@ -110,26 +111,12 @@ export default {
     addFavoritePokemonList(data) {
       this.pokemon = { ...data };
       if (this.checkPokemonSelected(this.pokemon.name)) {
-        this.$swal({
-          position: "top-end",
-          icon: "warning",
-          title: "Oops...",
-          html: `¡<b>${this.pokemon.name}</b> ya existe en favoritos!`,
-          showConfirmButton: false,
-          timer: 1500,
-        });
+        notifyAddFail(this.pokemon.name)
         this.pokemon = {};
         return;
       }
       this.$store.commit("setFavoritePokemons", this.pokemon);
-      this.$swal({
-        position: "top-end",
-        icon: "success",
-        title: "Ok...",
-        html: `¡<b>${this.pokemon.name}</b> agregado a favoritos!`,
-        showConfirmButton: false,
-        timer: 1500,
-      });
+      notifyAddSuccessful(this.pokemon.name)
     },
     checkPokemonSelected(name) {
       const check = this.favoritePokemonList.find(
@@ -144,14 +131,7 @@ export default {
     deletePokemon() {
       this.$store.dispatch("deletePokemonSelected", this.pokemon.name);
       this.deletePokemonDialog = false;
-      this.$swal({
-        position: "top-end",
-        icon: "success",
-        title: "Ok...",
-        html: `¡<b>${this.pokemon.name}</b> fue eliminado!`,
-        showConfirmButton: false,
-        timer: 1500,
-      });
+      notifyDeletedSuccessful(this.pokemon.name)
       this.pokemon = {};
     },
   },

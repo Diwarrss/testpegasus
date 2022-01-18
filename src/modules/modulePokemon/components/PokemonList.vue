@@ -43,7 +43,7 @@
 import Fieldset from "primevue/fieldset";
 import Button from "primevue/button";
 import { mapState } from "vuex";
-import { consoleLogError } from '@/modules/modulePokemon/mixins/showError.js'
+import { consoleLogError, notifyAddFail, notifyAddSuccessful } from '@/modules/modulePokemon/mixins/notify.js'
 export default {
   components: {
     Fieldset,
@@ -76,27 +76,13 @@ export default {
       let btn = document.getElementById(`btn-${name}`)
       btn.disabled = true
       if (this.checkPokemonSelected(name)) {
-        this.$swal({
-          position: "top-end",
-          icon: "warning",
-          title: "Oops...",
-          html: `¡<b>${name}</b> ya existe en la lista!`,
-          showConfirmButton: false,
-          timer: 1500,
-        });
+        notifyAddFail(name)
         btn.disabled = false
         return;
       }
       
       try {
-        this.$swal({
-          position: "top-end",
-          icon: "success",
-          title: "Ok...",
-          html: `¡<b>${name}</b> agregado a la lista!`,
-          showConfirmButton: false,
-          timer: 1500,
-        });
+        notifyAddSuccessful(name)
         const { data: pokemon } = await this.axios.get(`/pokemon/${name}`);
         this.$store.commit("setSelectedPokemons", pokemon);
         this.pokemons.next && this.pokemons.previous
